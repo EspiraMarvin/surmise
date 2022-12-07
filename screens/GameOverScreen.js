@@ -36,7 +36,10 @@ export default function GameOverScreen({
         <Text style={styles.highlight}>{userNumber}</Text>.
       </Text>
       <View style={styles.startGameBtn}>
-        <PrimaryButton onPressHandler={onStartNewGame}>
+        <PrimaryButton
+          onPressHandler={onStartNewGame}
+          style={styles.gameBtnOverText}
+        >
           Start New Game
         </PrimaryButton>
       </View>
@@ -73,6 +76,10 @@ const styles = StyleSheet.create({
   highlight: {
     fontFamily: "openSansBold",
     color: Colors.primary600,
+  },
+  gameBtnOverText: {
+    paddingHorizontal: 40,
+    paddingVertical: 15,
   },
   startGameBtn: {
     paddingVertical: 10,
