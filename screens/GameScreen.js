@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react"
-import { View, FlatList, Text, StyleSheet, Alert } from "react-native"
+import {
+  View,
+  FlatList,
+  useWindowDimensions,
+  StyleSheet,
+  Alert,
+} from "react-native"
 import { Ionicons } from "@expo/vector-icons"
 
 import Title from "../components/ui/Title"
@@ -67,9 +73,12 @@ export default function GameScreen({ userNumber, onGameOver }) {
 
   const guessRoundListLength = guessRounds.length
 
-  return (
-    <View style={styles.gameScreenContainer}>
-      <Title>Opponent's Guess</Title>
+  const { width, height } = useWindowDimensions()
+
+  const marginTopDistance = height < 420 ? 20 : 60
+
+  let content = (
+    <>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card>
         <InstructionText style={styles.instructionText}>
@@ -90,6 +99,41 @@ export default function GameScreen({ userNumber, onGameOver }) {
           </View>
         </View>
       </Card>
+    </>
+  )
+
+  if (width > 500) {
+    content = (
+      <>
+        <View style={styles.buttonContainerWide}>
+          <View style={styles.buttonsContainer}>
+            <View style={styles.buttonContainer}>
+              <PrimaryButton
+                onPressHandler={nextGuessHandler.bind(this, "lower")}
+              >
+                <Ionicons name="md-remove" size={24} color="white" />
+              </PrimaryButton>
+            </View>
+
+            <NumberContainer>{currentGuess}</NumberContainer>
+
+            <View style={styles.buttonContainer}>
+              <PrimaryButton onPressHandler={() => nextGuessHandler("greater")}>
+                <Ionicons name="md-add" size={24} color="white" />
+              </PrimaryButton>
+            </View>
+          </View>
+        </View>
+      </>
+    )
+  }
+
+  return (
+    <View
+      style={[styles.gameScreenContainer, { marginTop: marginTopDistance }]}
+    >
+      <Title>Opponent's Guess</Title>
+      {content}
       <View style={styles.listContainer}>
         {/* rounds log */}
         {guessRounds.length > 0 && (
@@ -114,7 +158,7 @@ const styles = StyleSheet.create({
   gameScreenContainer: {
     flex: 1,
     padding: 24,
-    marginTop: 50,
+    justifyContent: "center",
     alignItems: "center",
   },
   instructionText: {
@@ -127,6 +171,10 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 1,
+  },
+  buttonContainerWide: {
+    flexDirection: "row",
+    alignItems: "center",
   },
   listContainer: {
     flex: 1,

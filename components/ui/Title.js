@@ -1,9 +1,10 @@
-import { Text, StyleSheet } from "react-native"
-
+import { Text, StyleSheet, Dimensions } from "react-native"
 
 export default function Title({ children }) {
   return <Text style={styles.title}>{children}</Text>
 }
+
+const deviceWidth = Dimensions.get("window").width
 
 const styles = StyleSheet.create({
   title: {
@@ -14,8 +15,10 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "white",
     padding: 12,
-    width: 300,
+    alignItems: "center",
+    justifyContent: "center",
     maxWidth: "80%",
-    // minWidth: "",
+    width: 300,
+    // minWidth: "60%",
   },
 })

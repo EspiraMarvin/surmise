@@ -47,7 +47,6 @@ export default function App() {
 
   const startNewGameHandler = () => {
     setUserNumber(null)
-    setGameIsOver(true)
     setGuessRounds(0)
   }
 
