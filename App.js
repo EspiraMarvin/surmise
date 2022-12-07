@@ -1,7 +1,9 @@
-import { useState } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { StatusBar } from "expo-status-bar"
 import { StyleSheet, ImageBackground, SafeAreaView } from "react-native"
 import { LinearGradient } from "expo-linear-gradient"
+import { useFonts } from "expo-font"
+import * as SplashScreen from "expo-splash-screen"
 
 import StartGameScreen from "./screens/StartGameScreen"
 import GameScreen from "./screens/GameScreen"
@@ -9,9 +11,28 @@ import GameOverScreen from "./screens/GameOverScreen"
 
 import Colors from "./constants/colors"
 
+SplashScreen.preventAutoHideAsync()
+
 export default function App() {
   const [userNumber, setUserNumber] = useState()
   const [gameIsOver, setGameIsOver] = useState(true)
+
+  let customFonts = {
+    openSans: require("./assets/fonts/OpenSans-Regular.ttf"),
+    openSansBold: require("./assets/fonts/OpenSans-Bold.ttf"),
+  }
+
+  const [fontsLoaded] = useFonts(customFonts)
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync()
+    }
+  }, [fontsLoaded])
+
+  if (!fontsLoaded) {
+    return null
+  }
 
   const pickedNumberHandler = (pickedNumber) => {
     setUserNumber(pickedNumber)
@@ -45,7 +66,9 @@ export default function App() {
           style={styles.rootScreen}
           imageStyle={styles.backgroundImage}
         >
-          <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
+          <SafeAreaView onLayout={onLayoutRootView} style={styles.rootScreen}>
+            {screen}
+          </SafeAreaView>
         </ImageBackground>
       </LinearGradient>
     </>
