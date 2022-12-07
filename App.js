@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react"
+import { useState, useCallback } from "react"
 import { StatusBar } from "expo-status-bar"
 import { StyleSheet, ImageBackground, SafeAreaView } from "react-native"
 import { LinearGradient } from "expo-linear-gradient"
