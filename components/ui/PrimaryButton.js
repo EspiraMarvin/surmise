@@ -27,13 +27,14 @@ const styles = StyleSheet.create({
   },
   buttonInnerContainer: {
     backgroundColor: Colors.primary600,
-    paddingVertical: 8,
+    paddingVertical: 10,
     paddingHorizontal: 16,
     elevation: 2,
   },
   buttonText: {
     color: "white",
     textAlign: "center",
+    fontFamily: "openSans",
   },
   pressedItem: {
     opacity: 0.75,
