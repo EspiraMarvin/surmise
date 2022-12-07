@@ -13,7 +13,7 @@ import PrimaryButton from "../components/ui/PrimaryButton"
 import InstructionText from "../components/ui/InstructionText"
 import Card from "../components/ui/Card"
 import Title from "../components/ui/Title"
-import Colors from "../constants/colors"
+import Colors from "../constants/colors.ios"
 
 export default function StartGameScreen({ onPickNumber }) {
   const [number, setNumber] = useState("")

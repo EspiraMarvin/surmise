@@ -1,10 +1,8 @@
-import { Text, StyleSheet, Dimensions, Platform } from "react-native"
+import { Text, StyleSheet, Platform } from "react-native"
 
 export default function Title({ children }) {
   return <Text style={styles.title}>{children}</Text>
 }
-
-const deviceWidth = Dimensions.get("window").width
 
 const styles = StyleSheet.create({
   title: {

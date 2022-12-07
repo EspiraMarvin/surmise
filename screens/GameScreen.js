@@ -14,7 +14,6 @@ import InstructionText from "../components/ui/InstructionText"
 import NumberContainer from "../components/game/NumberContainer"
 import PrimaryButton from "../components/ui/PrimaryButton"
 import GuessLogItem from "../components/game/GuessLogItem"
-import Colors from "../constants/colors"
 
 // generate random no. btwn 1 & 99
 function generateRandomBetween(min, max, exclude) {
