@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     flexDirection: "row",
     justifyContent: "space-evenly",
-    marginTop: 8,
+    marginTop: 5,
   },
   buttonContainer: {
     flex: 1,
