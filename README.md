@@ -5,3 +5,16 @@
 ### RULES:
 
 1. User should insert numbers between 1-99
+
+
+SM Galaxy - 51
+landscape
+---------
+window-height- 411 
+window-width - 880
+
+
+portrait
+---------
+window-height- 411
+window-width - 880
