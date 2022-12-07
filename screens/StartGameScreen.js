@@ -34,7 +34,6 @@ export default function StartGameScreen({ onPickNumber }) {
       )
       return
     }
-    console.log("valid nu", number)
     onPickNumber(number)
   }
 
